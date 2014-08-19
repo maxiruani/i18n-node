@@ -1,0 +1,7 @@
+{
+    "Hello": "Hola Gallego!",
+    "greeting": {
+        "formal": "Buen dia señor",
+        "informal": "Buen dia tio!"
+    }
+}

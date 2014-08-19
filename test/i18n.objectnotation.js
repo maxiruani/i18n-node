@@ -8,7 +8,7 @@ describe('Object Notation', function () {
 
   beforeEach(function () {
     i18n.configure({
-      locales: ['en', 'de'],
+      locales: ['en', 'de', 'es', { locale: 'es-ar', parent: 'es' }],
       directory: './locales',
       register: global,
       updateFiles:true,
@@ -32,6 +32,7 @@ describe('Object Notation', function () {
 
 
   describe('i18nTranslate', function () {
+
     it('should return en translations as expected, using object traversal notation', function () {
       i18n.setLocale('en');
       should.equal(__('greeting.formal'), 'Hello');
@@ -48,7 +49,21 @@ describe('Object Notation', function () {
       should.equal(singular, '1 Katze');
       should.equal(plural, '3 Katzen');
     });
-  });
 
+    it('translate with parents', function () {
+      i18n.setLocale('es');
+      should.equal(__('Hello'), 'Hola Gallego!');
+      should.equal(__('greeting.formal'), 'Buen dia señor');
+      should.equal(__('greeting.informal'), 'Buen dia tio!');
+    });
+
+    it('translate with parents', function () {
+      i18n.setLocale('es-ar');
+      should.equal( __('Hello'), 'Hola Argento!' );
+      should.equal( __('greeting.formal'), 'Buen dia señor' );
+      should.equal( __('greeting.informal'), 'Buen dia boludaso!' );
+    });
+
+  });
 
 });
