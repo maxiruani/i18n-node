@@ -1,6 +1,11 @@
 {
-    "Hello": "Hola Argento!",
-    "greeting": {
-        "informal": "Buen dia boludaso!"
-    }
+	"home": "Inicio",
+	"title": "Ofertas, Promocioenes y Descuentos en Colombia",
+	"h1": "Ofertas, Promocioenes y Descuentos en Colombia",
+	"sitename": "ViajesTurismo",
+	"currency": "$",
+	"landingSecondText": "En %s encontrás los mejores precios en viajes a distintos destinos como %s, %s, %s y muchos otros más. Elegí el que más te interese y empezá a recorrer el mundo al más bajo precio. También vas a poder buscar por %s, %s o %s y por los proveedores de descuentos más conocidos del mercado como %s, %s entre otros.",
+	"expired": "Expirado",
+	"relatedDeals": "Descuentos relacionados",
+	"otherDeals": "Otros descuentos"
 }

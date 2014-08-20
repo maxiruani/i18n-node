@@ -1,7 +1,21 @@
 {
-    "Hello": "Hola Gallego!",
-    "greeting": {
-        "formal": "Buen dia señor",
-        "informal": "Buen dia tio!"
-    }
+	"categories": "Rubros",
+	"subcategories": "Rubros",
+	"entities": "Comercios",
+	"cities": "Ciudades",
+	"providers": "Proveedores",
+	"mostWanted": "Más buscados",
+	"seeOffer": "Ver Oferta",
+	"copyright": "ViajesTurismo - Todos los derechos reservados 2014",
+	"inPreposition": "en",
+	"home": "Inicio",
+	"title": "Ofertas y descuentos todos los días",
+	"h1": "Ofertas y descuentos todos los días",
+	"sitename": "ViajesTurismo",
+	"currency": "$",
+	"landingSecondText": "",
+	"expired": "Expirado",
+	"relatedDeals": "Descuentos relacionados",
+	"otherDeals": "Otros descuentos",
+	"Hello": "Hello"
 }

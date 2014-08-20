@@ -534,26 +534,7 @@ function localeAccessor(locale,singular,allowDelayedTraversal) {
     };
 
     lookupTerm(locale, singular);
-    /*
-    singular.split( '.' ).reduce( function(object,index) {
-      // Make the accessor return null.
-      accessor = nullAccessor;
-      // If our current target object (in the locale tree) doesn't exist or
-      // it doesn't have the next subterm as a member...
-      if( null === object || !object.hasOwnProperty(index)) {
-        // ...remember that we need retraversal (because we didn't find our target).
-        reTraverse = allowDelayedTraversal;
-        // Return null to avoid deeper iterations.
-        // TODO: Search in default or common locale
-        return null;
-      }
-      // We can traverse deeper, so we generate an accessor for this current level.
-      accessor = function(){ return object[index]; };
-      // Return a reference to the next deeper level in the locale tree.
-      return object[index];
 
-    }, locales[locale]);
-    */
     // Return the requested accessor.
     return function() {
       // If we need to re-traverse (because we didn't find our target term)...
@@ -572,7 +553,7 @@ function localeAccessor(locale,singular,allowDelayedTraversal) {
           return result;
       }
       else if (parentLocales[locale]) {
-        return parentLocales[locale][singular];
+        return locales[parentLocales[locale]][singular];
       }
       return result;
     };
@@ -636,32 +617,7 @@ function localeMutator(locale,singular,allowBranching) {
 
         }, locales[termLocale]);
     };
-      /*
-    // Split the provided term and run the callback for each subterm.
-    singular.split( '.' ).reduce( function(object,index){
-      // Make the mutator do nothing.
-      accessor = nullAccessor;
-      // If our current target object (in the locale tree) doesn't exist or
-      // it doesn't have the next subterm as a member...
-      if( null === object || !object.hasOwnProperty(index)) {
-        // ...check if we're allowed to create new branches.
-        if( allowBranching ) {
-          // If we are allowed to, create a new object along the path.
-          object[index] = {};
-        } else {
-          // If we aren't allowed, remember that we need to re-traverse later on and...
-          reTraverse = true;
-          // ...return null to make the next iteration bail our early on.
-          return null;
-        }
-      }
-      // Generate a mutator for the current level.
-      accessor = function(value){ return object[index] = value; };
-      // Return a reference to the next deeper level in the locale tree.
-      return object[index];
 
-    }, locales[locale]);
-*/
     // Return the final mutator.
     return function(value){
       // If we need to re-traverse the tree...

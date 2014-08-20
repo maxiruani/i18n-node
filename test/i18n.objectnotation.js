@@ -8,11 +8,10 @@ describe('Object Notation', function () {
 
   beforeEach(function () {
     i18n.configure({
+      objectNotation: true,
       locales: ['en', 'de', 'es', { locale: 'es-ar', parent: 'es' }],
       directory: './locales',
-      register: global,
-      updateFiles:true,
-      objectNotation:true
+      updateFiles: false
     });
   });
 
@@ -29,7 +28,6 @@ describe('Object Notation', function () {
       should.equal(__('format.time'), 'hh:mm:ss');
     });
   });
-
 
   describe('i18nTranslate', function () {
 
@@ -51,17 +49,8 @@ describe('Object Notation', function () {
     });
 
     it('translate with parents', function () {
-      i18n.setLocale('es');
-      should.equal(__('Hello'), 'Hola Gallego!');
-      should.equal(__('greeting.formal'), 'Buen dia señor');
-      should.equal(__('greeting.informal'), 'Buen dia tio!');
-    });
-
-    it('translate with parents', function () {
       i18n.setLocale('es-ar');
-      should.equal( __('Hello'), 'Hola Argento!' );
-      should.equal( __('greeting.formal'), 'Buen dia señor' );
-      should.equal( __('greeting.informal'), 'Buen dia boludaso!' );
+      should.equal( __('seeOffer'), 'Ver Oferta' );
     });
 
   });
