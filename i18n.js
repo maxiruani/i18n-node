@@ -19,7 +19,7 @@ var vsprintf = require('sprintf').vsprintf,
     parentLocales = {},
     api = ['__', '__n', 'getLocale', 'setLocale', 'getCatalog'],
     pathsep = path.sep || '/', // ---> means win support will be available in node 0.8.x and above
-    defaultLocale, updateFiles, cookiename, extension, directory, indent, objectNotation;
+    defaultLocale, avoidGuessLanguage, updateFiles, cookiename, extension, directory, indent, objectNotation;
 
 // public exports
 var i18n = exports;
@@ -53,6 +53,9 @@ i18n.configure = function i18nConfigure(opt) {
 
   // setting defaultLocale
   defaultLocale = (typeof opt.defaultLocale === 'string') ? opt.defaultLocale : 'en';
+
+  // check on every request and guess language or use the current language
+  avoidGuessLanguage = (typeof opt.avoidGuessLanguage === 'boolean') ? opt.avoidGuessLanguage : false;
 
   // enable object notation?
   objectNotation = (typeof opt.objectNotation === 'boolean') ? opt.objectNotation : false;
@@ -341,6 +344,10 @@ function guessLanguage(request) {
     var language_header = request.headers['accept-language'],
         languages = [],
         regions = [];
+
+    if (avoidGuessLanguage) {
+        language_header = undefined;
+    }
 
     request.languages = [defaultLocale];
     request.regions = [defaultLocale];
