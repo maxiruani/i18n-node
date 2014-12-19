@@ -26,6 +26,17 @@ var i18n = exports;
 
 i18n.version = '0.5.0';
 
+i18n.addCustomAPI = function (name, func) {
+    if (typeof func !== 'function') {
+        return;
+    }
+    if (api.indexOf(name) >= 0 || i18n[name] != undefined) {
+        return;
+    }
+    api.push(name);
+    i18n[name] = func;
+};
+
 i18n.configure = function i18nConfigure(opt) {
 
     // you may register helpers in global scope, up to you
